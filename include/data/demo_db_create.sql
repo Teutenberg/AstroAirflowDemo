@@ -6,6 +6,6 @@ CREATE DATABASE demo;
 
 -- Create a schema and a table in the demo database
 CREATE SCHEMA raw;
-CREATE TABLE raw.customer (data VARCHAR(100) NOT NULL);
-CREATE TABLE raw.account (data VARCHAR(100) NOT NULL);
-CREATE TABLE raw.transaction (data VARCHAR(100) NOT NULL);
+CREATE TABLE raw.customer (data JSON NOT NULL);
+CREATE TABLE raw.account (data JSON NOT NULL);
+CREATE TABLE raw.transaction (data JSON NOT NULL);
