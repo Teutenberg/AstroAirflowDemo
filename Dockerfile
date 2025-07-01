@@ -1,1 +1,2 @@
-FROM quay.io/astronomer/astro-runtime:11.7.0
+# https://www.astronomer.io/docs/astro/runtime-image-architecture
+FROM quay.io/astronomer/astro-runtime:13.0.0
