@@ -1,0 +1,9 @@
+# This file customizes the default Docker Compose setup for your Astro project.
+# For more info, see: https://docs.docker.com/compose/extends/
+services:
+  postgres:
+    # Mounts the local SQL script into the Postgres container's initialization directory.
+    # This script will be executed only when the database is first initialized.
+    # For more info, see: https://hub.docker.com/_/postgres#initialization-scripts
+    volumes:
+      - ./include/data/demo_db_create.sql:/docker-entrypoint-initdb.d/demo_db_create.sql
