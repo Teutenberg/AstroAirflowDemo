@@ -1,0 +1,422 @@
+[
+  {
+    "customer_id": "fad392a1-b44e-4485-b232-02ade58c0815",
+    "first_name": "Nicola",
+    "last_name": "Kelly",
+    "email": "georgiaaldridge@example.com",
+    "phone_number": "(021) 833 0108",
+    "address": "Apt. 384, 44 Kerr Circuit, Whakatahi 8406",
+    "date_of_birth": "1947-02-15",
+    "created_at": "2020-03-08T01:45:05"
+  },
+  {
+    "customer_id": "0b4e9bbc-5469-4750-8711-0e5fd24343be",
+    "first_name": "Robert",
+    "last_name": "Miller",
+    "email": "flynnwalton@example.com",
+    "phone_number": "+64275961615",
+    "address": "764 Johnstone Street, Wekarongo 9022",
+    "date_of_birth": "1985-01-30",
+    "created_at": "2022-01-01T19:04:33"
+  },
+  {
+    "customer_id": "23aea759-0cc2-45d1-af2d-cde31057f3f5",
+    "first_name": "Barry",
+    "last_name": "Jamieson",
+    "email": "lyndamiller@example.net",
+    "phone_number": "+64 4 894-7046",
+    "address": "Suite 504, 13 Webb Flats, Rongotapu 8537",
+    "date_of_birth": "1946-08-22",
+    "created_at": "2021-04-18T00:28:39"
+  },
+  {
+    "customer_id": "cac7903e-2ccc-4e39-8bf8-6861b3d27a16",
+    "first_name": "Isabella",
+    "last_name": "Poole",
+    "email": "peterfulton@example.com",
+    "phone_number": "+64-22-503-4065",
+    "address": "23 Howell Street, RD 3, Lewisberg 5192",
+    "date_of_birth": "1938-03-23",
+    "created_at": "2020-10-13T16:40:39"
+  },
+  {
+    "customer_id": "1887697c-f352-4db4-b3be-23f9609e5dcc",
+    "first_name": "Joshua",
+    "last_name": "Berry",
+    "email": "lesliejones@example.net",
+    "phone_number": "(03) 337 3364",
+    "address": "PO Box 451, Wharewhero 3391",
+    "date_of_birth": "1956-01-23",
+    "created_at": "2024-05-19T05:06:03"
+  },
+  {
+    "customer_id": "aee0bbda-aa72-4ccb-8ed3-82543533075c",
+    "first_name": "Blake",
+    "last_name": "Herd",
+    "email": "samanthaallen@example.net",
+    "phone_number": "022-699-5995",
+    "address": "6 Field Way, Korotapu 9424",
+    "date_of_birth": "1996-12-03",
+    "created_at": "2021-01-10T10:11:34"
+  },
+  {
+    "customer_id": "8d55cec6-b6cb-4314-ade5-8985b9d34f21",
+    "first_name": "Kathleen",
+    "last_name": "Scott",
+    "email": "seansteer@example.com",
+    "phone_number": "021 8245225",
+    "address": "PO Box 3, Campbellville 6188",
+    "date_of_birth": "1996-07-20",
+    "created_at": "2020-01-09T14:13:02"
+  },
+  {
+    "customer_id": "a10ec35b-0b51-4b26-a69e-9eac4486e4b5",
+    "first_name": "Hayden",
+    "last_name": "Dixon",
+    "email": "kevin59@example.net",
+    "phone_number": "021 811 6328",
+    "address": "Unit 95, 1 Wakatahinuku Square, Manawakawa 5342",
+    "date_of_birth": "1963-01-06",
+    "created_at": "2025-03-28T23:57:24"
+  },
+  {
+    "customer_id": "d130bfaa-8d9b-4102-82c3-b3870ef1038a",
+    "first_name": "Roger",
+    "last_name": "Graham",
+    "email": "davenportlinda@example.org",
+    "phone_number": "6419472",
+    "address": "508 Millard Way, Wakamotunuku 8861",
+    "date_of_birth": "1951-03-09",
+    "created_at": "2024-11-21T01:37:42"
+  },
+  {
+    "customer_id": "051583a6-f3e2-4e1d-8cb0-bbe2bf72c3b2",
+    "first_name": "Toni",
+    "last_name": "MacDonald",
+    "email": "vanessahayward@example.org",
+    "phone_number": "+64 9 780-0423",
+    "address": "PO Box 783, Cunningham Hill 5142",
+    "date_of_birth": "1993-02-15",
+    "created_at": "2022-08-16T01:57:08"
+  },
+  {
+    "customer_id": "68d52043-f465-4120-9d49-8416ea838510",
+    "first_name": "Maree",
+    "last_name": "Patchett",
+    "email": "xwoods@example.net",
+    "phone_number": "+64 27 958-5295",
+    "address": "1 Whangatere Street, Jonathon Flats 5800",
+    "date_of_birth": "1976-12-13",
+    "created_at": "2023-02-22T17:44:13"
+  },
+  {
+    "customer_id": "6ba803f8-f08c-472a-be20-51a2e9398ab1",
+    "first_name": "Donald",
+    "last_name": "Pope",
+    "email": "william83@example.org",
+    "phone_number": "+6479218930",
+    "address": "909 Coley Heights, RD 9, Fletchergate 9576",
+    "date_of_birth": "1992-03-18",
+    "created_at": "2020-09-03T18:22:41"
+  },
+  {
+    "customer_id": "dfcd02f5-6f30-4bca-b07f-76f34fb1f586",
+    "first_name": "Bryan",
+    "last_name": "Martin",
+    "email": "qmiller@example.com",
+    "phone_number": "+64 7 8040083",
+    "address": "75 McGrath-Read Pass, Ngaurupuke 2620",
+    "date_of_birth": "2006-06-17",
+    "created_at": "2022-10-16T04:08:48"
+  },
+  {
+    "customer_id": "613ab571-f1e2-480d-bf58-7a3baefe6417",
+    "first_name": "Susan",
+    "last_name": "Stewart",
+    "email": "roconnor@example.net",
+    "phone_number": "022 510 2758",
+    "address": "118 McMahon Terrace, MacPhersonborough 9747",
+    "date_of_birth": "1980-04-09",
+    "created_at": "2021-11-10T05:37:36"
+  },
+  {
+    "customer_id": "a5540224-dd47-4e6d-913b-cb1348ede6eb",
+    "first_name": "Ella",
+    "last_name": "O'Brien",
+    "email": "wfowler@example.com",
+    "phone_number": "+64 29 930 9050",
+    "address": "499 Evans Street, RD 1, Lilyneath 5153",
+    "date_of_birth": "1984-05-27",
+    "created_at": "2023-08-24T09:30:07"
+  },
+  {
+    "customer_id": "ae4837ea-e44b-4aa3-98d3-87be4c1d006a",
+    "first_name": "Charlotte",
+    "last_name": "Beattie",
+    "email": "jaydencumming@example.com",
+    "phone_number": "(027) 709 5416",
+    "address": "PO Box 888, Wharepuke 1352",
+    "date_of_birth": "1996-11-30",
+    "created_at": "2022-10-19T20:13:03"
+  },
+  {
+    "customer_id": "cc896da6-9586-4a19-ba95-8816b90f68b8",
+    "first_name": "Stephanie",
+    "last_name": "Matthews",
+    "email": "michaelbailey@example.com",
+    "phone_number": "(03) 6445626",
+    "address": "Flat 82, 42 Poole-Willis Road, Andrewmouth 2353",
+    "date_of_birth": "1942-01-01",
+    "created_at": "2022-03-11T20:28:35"
+  },
+  {
+    "customer_id": "5b4418aa-df15-4696-8f97-ad760e5519fe",
+    "first_name": "Jennifer",
+    "last_name": "Ferguson",
+    "email": "dawsonmax@example.org",
+    "phone_number": "07 809-8728",
+    "address": "Suite 614, 50 Wakapowhero Broadway, Mokomanawawhanga 8298",
+    "date_of_birth": "1944-08-11",
+    "created_at": "2022-09-07T01:39:38"
+  },
+  {
+    "customer_id": "7f41d334-b6e5-4d93-8531-7f5ccd266008",
+    "first_name": "Cameron",
+    "last_name": "Priest",
+    "email": "brianhiggins@example.net",
+    "phone_number": "(029) 6425980",
+    "address": "Unit 34, 516 Wekarongo Cross, Gardnerburgh 6407",
+    "date_of_birth": "1958-03-13",
+    "created_at": "2024-02-01T03:27:56"
+  },
+  {
+    "customer_id": "15c2323b-7226-48b7-8e6a-8152fd13e38f",
+    "first_name": "Phillip",
+    "last_name": "Jeffries",
+    "email": "curriejacob@example.net",
+    "phone_number": "+64-21-770-6882",
+    "address": "985 Daniel Avenue, RD 3, Kawanui 0115",
+    "date_of_birth": "1988-01-30",
+    "created_at": "2022-07-20T20:44:37"
+  },
+  {
+    "customer_id": "da280063-7259-4eb3-b814-fd3ace40bacf",
+    "first_name": "Julie",
+    "last_name": "Bird",
+    "email": "tholmes@example.com",
+    "phone_number": "(020) 862-0295",
+    "address": "62 Whareawa Street, Elleryleigh 5891",
+    "date_of_birth": "1965-08-14",
+    "created_at": "2022-06-05T04:30:02"
+  },
+  {
+    "customer_id": "16307249-edc6-4208-894a-7dbc45b8a7c3",
+    "first_name": "Daniel",
+    "last_name": "Hansen",
+    "email": "lwaugh@example.com",
+    "phone_number": "06-398-6889",
+    "address": "886 Koromakau Avenue, Lesleyside 6924",
+    "date_of_birth": "1940-01-06",
+    "created_at": "2021-04-29T05:24:24"
+  },
+  {
+    "customer_id": "643a9857-2bd9-40ac-8c1b-541129e4b7a4",
+    "first_name": "Paul",
+    "last_name": "Oliver",
+    "email": "edwardsmith@example.org",
+    "phone_number": "+64 22 2509804",
+    "address": "48 Mitchell Arcade, Harrisberg 8970",
+    "date_of_birth": "1946-01-26",
+    "created_at": "2021-12-23T21:06:43"
+  },
+  {
+    "customer_id": "ef18c08e-8d85-44f4-987a-e53d0981913a",
+    "first_name": "Lorraine",
+    "last_name": "Waghorn",
+    "email": "andrewgrant@example.com",
+    "phone_number": "281-8233",
+    "address": "PO Box 369, Caitlin Flats 9313",
+    "date_of_birth": "1937-02-04",
+    "created_at": "2023-09-18T18:39:27"
+  },
+  {
+    "customer_id": "88bb7790-dca6-4881-9ebd-63aa31a95bbd",
+    "first_name": "Monique",
+    "last_name": "Moody",
+    "email": "nsimpson@example.net",
+    "phone_number": "(04) 930-2454",
+    "address": "66 Teretanga Street, RD 9, Mokoroto 5556",
+    "date_of_birth": "1982-02-19",
+    "created_at": "2024-11-25T21:35:50"
+  },
+  {
+    "customer_id": "c7a4647d-8a39-4a5a-953b-7e651ee2a0cf",
+    "first_name": "Sophie",
+    "last_name": "Stratton",
+    "email": "amywarren@example.net",
+    "phone_number": "(03) 153-3842",
+    "address": "175 Parker Grove, East McKaygate 6990",
+    "date_of_birth": "1955-04-16",
+    "created_at": "2020-12-23T23:17:11"
+  },
+  {
+    "customer_id": "dd09cdf0-9145-41f0-9697-f6ef1988bfe6",
+    "first_name": "Joseph",
+    "last_name": "Matthews",
+    "email": "cameronfaulkner@example.com",
+    "phone_number": "(021) 7265628",
+    "address": "382 Payne-Harper Alley, Awangauru 9079",
+    "date_of_birth": "1999-12-02",
+    "created_at": "2023-01-11T03:38:07"
+  },
+  {
+    "customer_id": "faf2cab2-631b-4c23-b4fc-fe1d2cfbdea2",
+    "first_name": "Natasha",
+    "last_name": "Webb",
+    "email": "jacob28@example.org",
+    "phone_number": "029 632-3294",
+    "address": "Suite 306, 273 Tahitauhanga Gardens, Korotoa 2235",
+    "date_of_birth": "1975-06-09",
+    "created_at": "2025-01-21T00:56:47"
+  },
+  {
+    "customer_id": "f7566b04-fef9-4b02-8825-103299d23d4c",
+    "first_name": "Vanessa",
+    "last_name": "Stratford",
+    "email": "stuartholland@example.org",
+    "phone_number": "(020) 897-3035",
+    "address": "Suite 979, 68 Taumaunga Road, Awamaungahoro 8443",
+    "date_of_birth": "1954-03-26",
+    "created_at": "2023-01-27T08:49:54"
+  },
+  {
+    "customer_id": "f6863e11-0a3c-48eb-83d7-bb32fd217a13",
+    "first_name": "Sandra",
+    "last_name": "Allan",
+    "email": "gknight@example.com",
+    "phone_number": "889 4323",
+    "address": "PO Box 7, Spencerstone 9098",
+    "date_of_birth": "2004-02-05",
+    "created_at": "2025-04-04T07:30:58"
+  },
+  {
+    "customer_id": "141f3c57-be15-4a6b-941e-373359e32ae2",
+    "first_name": "Patricia",
+    "last_name": "Little",
+    "email": "heidi87@example.org",
+    "phone_number": "029 2260103",
+    "address": "90 Whangapapapa Street, RD 4, Costello Flats 5503",
+    "date_of_birth": "1968-07-18",
+    "created_at": "2020-03-13T05:40:03"
+  },
+  {
+    "customer_id": "de020358-9702-4be5-a188-5b1a257e9545",
+    "first_name": "Anne",
+    "last_name": "Miller",
+    "email": "phillipcook@example.com",
+    "phone_number": "+64 29 820 2658",
+    "address": "4 Jackson Highway, Smithmouth 8674",
+    "date_of_birth": "1952-06-19",
+    "created_at": "2023-09-04T22:25:23"
+  },
+  {
+    "customer_id": "74dcff6f-9591-4b55-8532-1b480c36d8db",
+    "first_name": "Manawa",
+    "last_name": "Curtis",
+    "email": "michaeljohansen@example.net",
+    "phone_number": "021 914-0237",
+    "address": "9 Cody Street, RD 10, Fentonmouth 2020",
+    "date_of_birth": "1947-09-10",
+    "created_at": "2024-02-24T22:05:52"
+  },
+  {
+    "customer_id": "53b76075-359a-4ba9-be77-537d2a5e8885",
+    "first_name": "Malcolm",
+    "last_name": "O'Keefe",
+    "email": "bgleeson@example.com",
+    "phone_number": "(027) 2838796",
+    "address": "6 Tangitau Crescent, RD 8, Arakowhai 2689",
+    "date_of_birth": "1937-04-26",
+    "created_at": "2024-06-09T03:09:12"
+  },
+  {
+    "customer_id": "0ca023a2-fdbe-4754-bbdf-3785cb694237",
+    "first_name": "Tessa",
+    "last_name": "West",
+    "email": "barrcatherine@example.com",
+    "phone_number": "021 128 8075",
+    "address": "Unit 45, 4 Scott-O'Connell Mews, Christieing 5714",
+    "date_of_birth": "1982-12-18",
+    "created_at": "2023-09-30T14:38:27"
+  },
+  {
+    "customer_id": "ad34f615-d5ce-481a-96c3-ae23a5fa7534",
+    "first_name": "Steven",
+    "last_name": "Watt",
+    "email": "daviesluke@example.com",
+    "phone_number": "(029) 653-6250",
+    "address": "Suite 259, 280 Tangimoko Circuit, Armstrongmouth 1522",
+    "date_of_birth": "1989-11-23",
+    "created_at": "2022-08-16T10:24:00"
+  },
+  {
+    "customer_id": "329b8e81-3c9d-432c-a089-fed9875c952e",
+    "first_name": "Carolyn",
+    "last_name": "Jensen",
+    "email": "nicolasmall@example.net",
+    "phone_number": "898-9006",
+    "address": "297 Seymour Avenue, Andersonfort 2669",
+    "date_of_birth": "1997-05-11",
+    "created_at": "2020-11-12T06:36:17"
+  },
+  {
+    "customer_id": "550f315c-be93-4d7d-b209-6df421d288ec",
+    "first_name": "Richard",
+    "last_name": "Black",
+    "email": "popemaddison@example.org",
+    "phone_number": "(027) 5275646",
+    "address": "2 Miller Street, Nigeltown 6461",
+    "date_of_birth": "1986-09-12",
+    "created_at": "2023-08-21T13:14:51"
+  },
+  {
+    "customer_id": "cce3b1d5-874a-4363-a931-f69e5846d1e4",
+    "first_name": "Jack",
+    "last_name": "Smith",
+    "email": "gorehayley@example.org",
+    "phone_number": "022 483 5833",
+    "address": "PO Box 3, Brooksside 9724",
+    "date_of_birth": "1955-02-13",
+    "created_at": "2021-04-04T19:37:12"
+  },
+  {
+    "customer_id": "1cbce6ed-edf2-4b82-bd5c-c0b0f1979aee",
+    "first_name": "Barry",
+    "last_name": "McEwen",
+    "email": "ssmart@example.net",
+    "phone_number": "+64-27-721-9455",
+    "address": "95 Rose-Seymour Drive, High Lawsonneath 9221",
+    "date_of_birth": "1956-07-22",
+    "created_at": "2022-03-10T19:24:38"
+  },
+  {
+    "customer_id": "911c71bc-cfa8-44b3-b163-a8a6408afd99",
+    "first_name": "Bruce",
+    "last_name": "Thompson",
+    "email": "angeladavis@example.net",
+    "phone_number": "+64 21 903 3597",
+    "address": "403 Jones Street, Lake Blairneath 1148",
+    "date_of_birth": "1997-04-20",
+    "created_at": "2021-04-24T11:37:53"
+  },
+  {
+    "customer_id": "40c7e405-4b1f-49eb-b6b8-0d342fb81b7d",
+    "first_name": "Michelle",
+    "last_name": "Fletcher",
+    "email": "robertmclean@example.org",
+    "phone_number": "679-6850",
+    "address": "3 O'Donnell-Lancaster Road, Gillespieborough 8827",
+    "date_of_birth": "1991-06-16",
+    "created_at": "2021-04-05T23:31:43"
+  }
+]
