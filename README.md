@@ -1,48 +1,68 @@
-Overview
-========
+# Astro Airflow Demo
 
-Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
+This project demonstrates a local development environment for Apache Airflow and dbt using Astro Runtime, Docker Compose, and PostgreSQL. It includes:
 
-Project Contents
-================
+- Automated setup of Python virtual environments for Airflow and dbt
+- Example Airflow DAGs for generating and loading demo banking data
+- Pre-configured Postgres database with initialization scripts
+- Integration with dbt via Astronomer Cosmos
 
-Your Astro project contains the following files and folders:
+## Quick Start
 
-- dags: This folder contains the Python files for your Airflow DAGs. By default, this directory includes one example DAG:
-    - `example_astronauts`: This DAG shows a simple ETL pipeline example that queries the list of astronauts currently in space from the Open Notify API and prints a statement for each astronaut. The DAG uses the TaskFlow API to define tasks in Python, and dynamic task mapping to dynamically print a statement for each astronaut. For more on how this DAG works, see our [Getting started tutorial](https://www.astronomer.io/docs/learn/get-started-with-airflow).
-- Dockerfile: This file contains a versioned Astro Runtime Docker image that provides a differentiated Airflow experience. If you want to execute other commands or overrides at runtime, specify them here.
-- include: This folder contains any additional files that you want to include as part of your project. It is empty by default.
-- packages.txt: Install OS-level packages needed for your project by adding them to this file. It is empty by default.
-- requirements.txt: Install Python packages needed for your project by adding them to this file. It is empty by default.
-- plugins: Add custom or community plugins for your project to this file. It is empty by default.
-- airflow_settings.yaml: Use this local-only file to specify Airflow Connections, Variables, and Pools instead of entering them in the Airflow UI as you develop DAGs in this project.
+1. **Clone the repository**
+2. **Install the Astro CLI:**
+   - Follow the official instructions for your OS: [Install Astro CLI](https://docs.astronomer.io/astro/cli/install-cli)
 
-Deploy Your Project Locally
-===========================
+3. **Create and activate virtual environments:**
+   ```powershell
+   . .\activate_venv.ps1
+   ```
+   - `.venv_airflow` is used for Airflow development (auto-selected in VS Code)
+   - `.venv_dbt` is used for dbt CLI (activate manually as needed)
 
-1. Start Airflow on your local machine by running 'astro dev start'.
+4. **Start the stack:**
+   ```sh
+   astro dev start
+   ```
+   This will start Airflow and Postgres, and initialize the demo database using `include/demo_db_create.sql`.
 
-This command will spin up 4 Docker containers on your machine, each for a different Airflow component:
+5. **Access Airflow UI:**
+   - Navigate to [http://localhost:8080](http://localhost:8080)
+   - Default credentials: `admin` / `admin` (unless overridden)
 
-- Postgres: Airflow's Metadata Database
-- Webserver: The Airflow component responsible for rendering the Airflow UI
-- Scheduler: The Airflow component responsible for monitoring and triggering tasks
-- Triggerer: The Airflow component responsible for triggering deferred tasks
+## Project Structure
 
-2. Verify that all 4 Docker containers were created by running 'docker ps'.
+- `dags/` — Airflow DAGs (see `generate_demo_data.py` for demo data generation)
+- `include/demo_db_create.sql` — SQL script to initialize the demo database (used by Docker Compose)
+- `requirements.txt` — Python dependencies for Airflow
+- `activate_venv.ps1` — Script to set up and activate Python virtual environments
+- `airflow_settings.yaml` — Pre-configured Airflow connections for local development
+- `docker-compose.override.yml` — Mounts the SQL init script into the Postgres container
+- `dbt/` — (optional) Place your dbt project here for dbt development and integration
 
-Note: Running 'astro dev start' will start your project with the Airflow Webserver exposed at port 8080 and Postgres exposed at port 5432. If you already have either of those ports allocated, you can either [stop your existing Docker containers or change the port](https://www.astronomer.io/docs/astro/cli/troubleshoot-locally#ports-are-not-available-for-my-local-airflow-webserver).
+## Notes
 
-3. Access the Airflow UI for your local Airflow project. To do so, go to http://localhost:8080/ and log in with 'admin' for both your Username and Password.
+- The Airflow Postgres connection is pre-configured as `pg_demo` (see `airflow_settings.yaml`).
+- All demo data is stored as JSONB in the `raw` schema of the `demo` database.
+- dbt is installed in a separate venv to avoid dependency conflicts with Airflow.
 
-You should also be able to access your Postgres Database at 'localhost:5432/postgres'.
+## Useful Commands
 
-Deploy Your Project to Astronomer
-=================================
+- Activate Airflow venv:  `. .venv_airflow\Scripts\Activate.ps1`
+- Activate dbt venv:      `. .venv_dbt\Scripts\Activate.ps1`
+- Run dbt CLI:            `dbt --version`
 
-If you have an Astronomer account, pushing code to a Deployment on Astronomer is simple. For deploying instructions, refer to Astronomer documentation: https://www.astronomer.io/docs/astro/deploy-code/
+### Astro CLI
+- Start local stack:      `astro dev start`
+- Stop local stack:       `astro dev stop`
+- Restart local stack:    `astro dev restart`
+- Kill all containers:    `astro dev kill`
+- View logs:              `astro dev logs`
+- Open Airflow UI:        `astro dev open` (opens browser to Airflow UI)
+- List Airflow DAGs:      `astro dev dags list`
+- Export Airflow settings: `astro dev object export`
+- Import Airflow settings: `astro dev object import`
 
-Contact
-=======
+---
 
-The Astronomer CLI is maintained with love by the Astronomer team. To report a bug or suggest a change, reach out to our support.
+For more details, see comments in each file or reach out to the project maintainer.

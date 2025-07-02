@@ -1,3 +1,25 @@
+# ============================================================================
+# activate_venv.ps1
+#
+# This script automates the setup and activation of two Python virtual environments:
+#   - .venv_airflow: for Apache Airflow development (requirements.txt installed)
+#   - .venv_dbt: for dbt (data build tool) development (dbt-core and dbt-postgres installed)
+#
+# Usage:
+#   . .\activate_venv.ps1
+#
+# What it does:
+#   1. Creates .venv_airflow and .venv_dbt if they do not exist.
+#   2. Installs/upgrades pip in both environments.
+#   3. Installs Airflow dependencies from requirements.txt into .venv_airflow.
+#   4. Installs dbt-core and dbt-postgres into .venv_dbt.
+#   5. Prints instructions for activating the environments in new terminals.
+#
+# Note: To activate a venv in a new terminal, use:
+#   . .venv_airflow\Scripts\Activate.ps1
+#   . .venv_dbt\Scripts\Activate.ps1
+# ============================================================================
+
 # Create .venv_airflow if it does not exist
 if (-not (Test-Path ".\.venv_airflow")) {
     python -m venv ".\.venv_airflow"
