@@ -1,0 +1,6 @@
+{
+    // This workspace uses .venv_airflow as the default Python interpreter for VS Code.
+    // This enables IntelliSense, linting, and debugging for Airflow DAG development.
+    // dbt is kept in a separate venv to avoid dependency conflicts; activate .venv_dbt in the terminal for dbt CLI.
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv_airflow/Scripts/python.exe"
+}

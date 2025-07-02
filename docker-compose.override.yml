@@ -6,7 +6,4 @@ services:
     # This script will be executed only when the database is first initialized.
     # For more info, see: https://hub.docker.com/_/postgres#initialization-scripts
     volumes:
-      - ./include/data/demo_db_create.sql:/docker-entrypoint-initdb.d/demo_db_create.sql
-      - ./include/data/customers.jsonl:/docker-entrypoint-initdb.d/customers.jsonl
-      - ./include/data/accounts.jsonl:/docker-entrypoint-initdb.d/accounts.jsonl
-      - ./include/data/transactions.jsonl:/docker-entrypoint-initdb.d/transactions.jsonl
+      - ./include/demo_db_create.sql:/docker-entrypoint-initdb.d/demo_db_create.sql
