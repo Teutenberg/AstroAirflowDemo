@@ -85,26 +85,17 @@ def generate_demo_data():
     def insert_to_postgres(customers, accounts, transactions):
         hook = PostgresHook(postgres_conn_id='pg_demo')
         # Insert customers
-        hook.run("TRUNCATE TABLE RAW.CUSTOMER;")
-        for c in customers:
-            hook.run(
-                "INSERT INTO RAW.CUSTOMER (DATA) VALUES (%s);",
-                parameters=[json.dumps(c)]
-            )
+        hook.run("TRUNCATE table raw.customer;")
+        customer_rows = [(json.dumps(c),) for c in customers]
+        hook.insert_rows(table="raw.customer", rows=customer_rows, target_fields=["data"])
         # Insert accounts
-        hook.run("TRUNCATE TABLE RAW.ACCOUNT;")
-        for a in accounts:
-            hook.run(
-                "INSERT INTO RAW.ACCOUNT (DATA) VALUES (%s);",
-                parameters=[json.dumps(a)]
-            )
+        hook.run("TRUNCATE TABLE raw.account;")
+        account_rows = [(json.dumps(a),) for a in accounts]
+        hook.insert_rows(table="raw.account", rows=account_rows, target_fields=["data"])
         # Insert transactions
-        hook.run("TRUNCATE TABLE RAW.TRANSACTION;")
-        for t in transactions:
-            hook.run(
-                "INSERT INTO RAW.TRANSACTION (DATA) VALUES (%s);",
-                parameters=[json.dumps(t)]
-            )
+        hook.run("TRUNCATE TABLE raw.transaction;")
+        transaction_rows = [(json.dumps(t),) for t in transactions]
+        hook.insert_rows(table="raw.transaction", rows=transaction_rows, target_fields=["data"])
 
     @task()
     def join_and_count_from_db():
@@ -113,10 +104,16 @@ def generate_demo_data():
         import json
         from airflow.providers.postgres.hooks.postgres import PostgresHook
         hook = PostgresHook(postgres_conn_id='pg_demo')
+        # Helper to handle both JSON string and dict
+        def parse_row(row):
+            val = row[0]
+            if isinstance(val, dict):
+                return val
+            return json.loads(val)
         # Fetch data from Postgres
-        customers = [json.loads(row[0]) for row in hook.get_records('SELECT DATA FROM RAW.CUSTOMER')]
-        accounts = [json.loads(row[0]) for row in hook.get_records('SELECT DATA FROM RAW.ACCOUNT')]
-        transactions = [json.loads(row[0]) for row in hook.get_records('SELECT DATA FROM RAW.TRANSACTION')]
+        customers = [parse_row(row) for row in hook.get_records('SELECT data FROM raw.customer')]
+        accounts = [parse_row(row) for row in hook.get_records('SELECT data FROM raw.account')]
+        transactions = [parse_row(row) for row in hook.get_records('SELECT data FROM raw.transaction')]
         # Build lookup for accounts by customer_id
         accounts_by_customer = defaultdict(list)
         for acc in accounts:
@@ -159,7 +156,8 @@ def generate_demo_data():
     customers = generate_customers()
     accounts = generate_accounts(customers)
     transactions = generate_transactions(accounts)
-    insert_to_postgres(customers, accounts, transactions)
-    join_and_count_from_db()
+    insert_task = insert_to_postgres(customers, accounts, transactions)
+    join_and_count_from_db().set_upstream(insert_task)
+
 
 dag = generate_demo_data()

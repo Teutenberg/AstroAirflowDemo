@@ -9,7 +9,7 @@ airflow:
   connections:
     - conn_id: pg_demo
       conn_type: postgres
-      conn_host: localhost
+      conn_host: host.docker.internal
       conn_schema: demo
       conn_login: postgres
       conn_password: postgres

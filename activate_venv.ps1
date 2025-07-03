@@ -21,40 +21,46 @@
 # ============================================================================
 
 # Create .venv_airflow if it does not exist
-if (-not (Test-Path ".\.venv_airflow")) {
-    python -m venv ".\.venv_airflow"
-    Write-Host "Created virtual environment: .venv_airflow"
+$airflowVenv = Join-Path $PSScriptRoot ".venv_airflow"
+$dbtVenv = Join-Path $PSScriptRoot ".venv_dbt"
+
+if (-not (Test-Path $airflowVenv)) {
+    python -m venv $airflowVenv
+    Write-Host "Created virtual environment: $airflowVenv"
 } else {
-    Write-Host "Virtual environment '.venv_airflow' already exists."
+    Write-Host "Virtual environment '$airflowVenv' already exists."
 }
 
 # Create .venv_dbt if it does not exist
-if (-not (Test-Path ".\.venv_dbt")) {
-    python -m venv ".\.venv_dbt"
-    Write-Host "Created virtual environment: .venv_dbt"
+if (-not (Test-Path $dbtVenv)) {
+    python -m venv $dbtVenv
+    Write-Host "Created virtual environment: $dbtVenv"
 } else {
-    Write-Host "Virtual environment '.venv_dbt' already exists."
+    Write-Host "Virtual environment '$dbtVenv' already exists."
 }
 
 # Activate .venv_airflow and install requirements if present
 Write-Host "Activating .venv_airflow and installing requirements..."
-& ".\.venv_airflow\Scripts\Activate.ps1"
+& (Join-Path $airflowVenv "Scripts\Activate.ps1")
 python -m pip install --upgrade pip
-if (Test-Path "requirements.txt") {
-    pip install -r requirements.txt
+if (Test-Path (Join-Path $PSScriptRoot "requirements.txt")) {
+    pip install -r (Join-Path $PSScriptRoot "requirements.txt")
 } else {
     Write-Host "requirements.txt not found. Skipping requirements installation."
 }
 
 # Activate .venv_dbt and install dbt dependencies
 Write-Host "Activating .venv_dbt and installing dbt dependencies..."
-& ".\.venv_dbt\Scripts\Activate.ps1"
+& (Join-Path $dbtVenv "Scripts\Activate.ps1")
 python -m pip install --upgrade pip
 pip install dbt-core dbt-postgres
 
+# Set environment variable for dbt profiles directory
+# This is where dbt will look for the profiles.yml file
+$env:DBT_PROFILES_DIR = Join-Path $PSScriptRoot "dbt"
+
 Clear-Host
 # Print completion message
-Write-Host "Virtual environments created and activated. Dependencies installed."
-Write-Host "You can now use .venv_airflow for Airflow development and .venv_dbt for dbt development."
-# Note: To activate the virtual environments in a new terminal, use:
-# .\.venv_airflow\Scripts\Activate.ps1
+Write-Host ".venv_airflow is setup for dag python linting in vscode workspace config: .vscode\settings.json" -ForegroundColor DarkGreen
+Write-Host ".venv_dbt is activated in terminal for dbt development." -ForegroundColor DarkGreen
+Write-Host "Re-exec after requirements.txt update. Happy coding!" -ForegroundColor DarkMagenta

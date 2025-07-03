@@ -45,6 +45,12 @@ This project demonstrates a local development environment for Apache Airflow and
 - The Airflow Postgres connection is pre-configured as `pg_demo` (see `airflow_settings.yaml`).
 - All demo data is stored as JSONB in the `raw` schema of the `demo` database.
 - dbt is installed in a separate venv to avoid dependency conflicts with Airflow.
+- Execute dbt commands you must in the dbt project direcotyr: 
+    
+  `set-location .\dbt\cosmos_demo\`
+- Execute astro commands you must in the repo root directory:
+    
+  `Set-Location (((Get-Location).Path -split 'astro_airflow_demo')[0]+'astro_airflow_demo')`
 
 ## Useful Commands
 

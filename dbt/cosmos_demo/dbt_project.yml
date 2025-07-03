@@ -6,7 +6,7 @@ name: 'cosmos_demo'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'cosmos_demo'
+profile: 'demo'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -26,11 +26,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
-# In this example config, we tell dbt to build all models in the example/
-# directory as views. These settings can be overridden in the individual model
-# files using the `{{ config(...) }}` macro.
+# This section allows you to set default configurations for your models.
+# Here we set the default database for all models in this project.
+# See individual model files for specific configurations.
+# Note: The database name should match the one in your dbt profile.
 models:
   cosmos_demo:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    +database: demo # Default database for all models in this project

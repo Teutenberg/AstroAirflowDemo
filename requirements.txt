@@ -3,3 +3,4 @@
 apache-airflow-providers-postgres  # Airflow Postgres operator/hooks for database tasks
 astronomer-cosmos                  # Astronomer Cosmos: dbt integration for Airflow
 faker                             # Python library for generating fake data (used in demo DAG)
+pandas

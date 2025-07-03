@@ -1,0 +1,98 @@
+version: 2
+
+models:
+  - name: flat_customer
+    description: |-
+      Flattens JSON data from the raw.customer table. Extracts key fields and keeps the full JSON for schema evolution.
+      See model SQL for schema evolution and Python model notes.
+    columns:
+      - name: customer_id
+        description: Unique customer identifier
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: Customer first name
+      - name: last_name
+        description: Customer last name
+      - name: email
+        description: Customer email address
+      - name: address
+        description: Customer address
+      - name: phone_number
+        description: Customer phone number
+      - name: date_of_birth
+        description: Customer date of birth
+      - name: created_at
+        description: Customer creation timestamp
+      - name: raw_json
+        description: Full JSON record for schema evolution
+
+  - name: flat_account
+    description: |-
+      Flattens JSON data from the raw.account table. Extracts key fields and keeps the full JSON for schema evolution.
+      See model SQL for schema evolution and Python model notes.
+    columns:
+      - name: account_id
+        description: Unique account identifier
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: Customer identifier
+        tests:
+          - unique
+          - not_null
+      - name: account_number
+        description: Account number
+        tests:
+          - unique
+          - not_null
+      - name: account_type
+        description: Type of account
+      - name: bank_name
+        description: Name of the bank
+      - name: branch
+        description: Bank branch
+      - name: balance
+        description: Account balance
+      - name: currency
+        description: Currency code
+      - name: is_active
+        description: Whether the account is active
+      - name: opened_at
+        description: Account opening timestamp
+      - name: raw_json
+        description: Full JSON record for schema evolution
+
+  - name: flat_transaction
+    description: |-
+      Flattens JSON data from the raw.transaction table. Extracts key fields and keeps the full JSON for schema evolution.
+      See model SQL for schema evolution and Python model notes.
+    columns:
+      - name: transaction_id
+        description: Unique transaction identifier
+        tests:
+          - unique
+          - not_null
+      - name: account_id
+        description: Account identifier
+        tests:
+          - unique
+          - not_null
+      - name: transaction_type
+        description: Type of transaction
+      - name: amount
+        description: Transaction amount
+      - name: currency
+        description: Currency code
+      - name: category
+        description: Transaction category
+      - name: merchant
+        description: Merchant name
+      - name: description
+        description: Transaction description
+      - name: transaction_date
+        description: Transaction date and time
+      - name: raw_json
+        description: Full JSON record for schema evolution

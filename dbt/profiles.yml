@@ -1,0 +1,21 @@
+# dbt profiles.yml for local Postgres connection
+demo:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      threads: 4
+      host: localhost
+      port: 5432
+      ### IMPORTANT: Do not hardcode user pass in this profile.yml
+      ### Instead, use environment variables or secrets management
+      ### Uncomment the following lines to use environment variables
+      # user: "{{ env_var('DBT_USER') }}"
+      # password: "{{ env_var('DBT_PASSWORD') }}"
+      user: postgres
+      pass: postgres
+      dbname: demo
+      schema: raw
+      keepalives_idle: 0
+      connect_timeout: 10
+      sslmode: prefer
