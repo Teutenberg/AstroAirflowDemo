@@ -33,3 +33,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   cosmos_demo:
     +database: demo # Default database for all models in this project
+
+flags:
+  send_anonymous_usage_stats: False
