@@ -26,15 +26,15 @@ with customer_json as (
 )
 , flattened as (
     select
-        -- Replace these with the actual JSON keys you want to extract
-        data->>'customer_id' as customer_id,
-        data->>'first_name' as first_name,
-        data->>'last_name' as last_name,
-        data->>'email' as email,
-        data->>'address' as address,
-        data->>'phone_number' as phone_number,
-        data->>'date_of_birth' as date_of_birth,
-        data->>'created_at' as created_at,
+        -- Use macro for agnostic JSON extraction
+        {{ extract_json_field('data', 'customer_id', 'text') }} as customer_id,
+        {{ extract_json_field('data', 'first_name', 'text') }} as first_name,
+        {{ extract_json_field('data', 'last_name', 'text') }} as last_name,
+        {{ extract_json_field('data', 'email', 'text') }} as email,
+        {{ extract_json_field('data', 'address', 'text') }} as address,
+        {{ extract_json_field('data', 'phone_number', 'text') }} as phone_number,
+        {{ extract_json_field('data', 'date_of_birth', 'text') }} as date_of_birth,
+        {{ extract_json_field('data', 'created_at', 'text') }} as created_at,
         data as raw_json -- keep the raw JSON for schema evolution
     from customer_json
 )

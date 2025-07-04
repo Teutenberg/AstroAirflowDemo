@@ -26,17 +26,17 @@ with account_json as (
 )
 , flattened as (
     select
-        -- Replace these with the actual JSON keys you want to extract
-        data->>'account_id' as account_id,
-        data->>'customer_id' as customer_id,
-        data->>'account_number' as account_number,
-        data->>'account_type' as account_type,
-        data->>'bank_name' as bank_name,
-        data->>'branch' as branch,
-        (data->>'balance')::numeric as balance,
-        data->>'currency' as currency,
-        (data->>'is_active')::boolean as is_active,
-        data->>'opened_at' as opened_at,
+        -- Use macro for agnostic JSON extraction
+        {{ extract_json_field('data', 'account_id', 'text') }} as account_id,
+        {{ extract_json_field('data', 'customer_id', 'text') }} as customer_id,
+        {{ extract_json_field('data', 'account_number', 'text') }} as account_number,
+        {{ extract_json_field('data', 'account_type', 'text') }} as account_type,
+        {{ extract_json_field('data', 'bank_name', 'text') }} as bank_name,
+        {{ extract_json_field('data', 'branch', 'text') }} as branch,
+        {{ extract_json_field('data', 'balance', 'numeric') }} as balance,
+        {{ extract_json_field('data', 'currency', 'text') }} as currency,
+        {{ extract_json_field('data', 'is_active', 'boolean') }} as is_active,
+        {{ extract_json_field('data', 'opened_at', 'text') }} as opened_at,
         data as raw_json -- keep the raw JSON for schema evolution
     from account_json
 )

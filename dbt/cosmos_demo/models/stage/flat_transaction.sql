@@ -26,16 +26,16 @@ with transaction_json as (
 )
 , flattened as (
     select
-        -- Replace these with the actual JSON keys you want to extract
-        data->>'transaction_id' as transaction_id,
-        data->>'account_id' as account_id,
-        data->>'transaction_type' as transaction_type,
-        (data->>'amount')::numeric as amount,
-        data->>'currency' as currency,
-        data->>'category' as category,
-        data->>'merchant' as merchant,
-        data->>'description' as description,
-        data->>'transaction_date' as transaction_date,
+        -- Use macro for agnostic JSON extraction
+        {{ extract_json_field('data', 'transaction_id', 'text') }} as transaction_id,
+        {{ extract_json_field('data', 'account_id', 'text') }} as account_id,
+        {{ extract_json_field('data', 'transaction_type', 'text') }} as transaction_type,
+        {{ extract_json_field('data', 'amount', 'numeric') }} as amount,
+        {{ extract_json_field('data', 'currency', 'text') }} as currency,
+        {{ extract_json_field('data', 'category', 'text') }} as category,
+        {{ extract_json_field('data', 'merchant', 'text') }} as merchant,
+        {{ extract_json_field('data', 'description', 'text') }} as description,
+        {{ extract_json_field('data', 'transaction_date', 'text') }} as transaction_date,
         data as raw_json -- keep the raw JSON for schema evolution
     from transaction_json
 )
