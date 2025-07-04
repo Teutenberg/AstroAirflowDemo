@@ -7,7 +7,7 @@
 
 airflow:
   connections:
-    - conn_id: pg_demo
+    - conn_id: db_conn
       conn_type: postgres
       conn_host: host.docker.internal
       conn_schema: demo
@@ -20,5 +20,5 @@ airflow:
       pool_slot:
       pool_description:
   variables:
-    - variable_name:
-      variable_value:
+    - variable_name: env
+      variable_value: dev

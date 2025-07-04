@@ -1,3 +1,8 @@
+# -----------------------------------------------------------------------------
+# This profiles.yml is ONLY used for running dbt CLI locally.
+# It is NOT used by Airflow Cosmos or Airflow DAGs, which generate their own
+# profiles dynamically from Airflow connections and DAG configuration.
+# -----------------------------------------------------------------------------
 # dbt profiles.yml for local Postgres connection
 demo:
   target: dev
@@ -15,7 +20,7 @@ demo:
       user: postgres
       pass: postgres
       dbname: demo
-      schema: raw
+      schema: stage
       keepalives_idle: 0
       connect_timeout: 10
       sslmode: prefer

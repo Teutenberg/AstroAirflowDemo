@@ -8,6 +8,12 @@ version: '1.0.0'
 # This setting configures which "profile" dbt uses for this project.
 profile: 'demo'
 
+# This setting specifies the default variables for this project.
+# Variables can be used to parameterize your dbt models, tests, and macros.
+vars:
+  # The `start_date` variable will be accessible in all resources
+  env: 'dev'  # This variable can be used to identify the source of the dbt run
+
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!

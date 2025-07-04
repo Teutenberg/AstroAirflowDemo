@@ -26,9 +26,15 @@ This project demonstrates a local development environment for Apache Airflow and
    ```
    This will start Airflow and Postgres, and initialize the demo database using `include/demo_db_create.sql`.
 
-5. **Access Airflow UI:**
-   - Navigate to [http://localhost:8080](http://localhost:8080)
-   - Default credentials: `admin` / `admin` (unless overridden)
+5. **Trigger generate_demo_data:**
+   ```sh
+   astro dev run dags trigger generate_demo_data
+   ```
+
+6. **Trigger dbt_cosmos_demo_dag:**
+   ```sh
+   astro dev run dags trigger dbt_cosmos_demo_dag
+   ```
 
 ## Project Structure
 
@@ -42,7 +48,7 @@ This project demonstrates a local development environment for Apache Airflow and
 
 ## Notes
 
-- The Airflow Postgres connection is pre-configured as `pg_demo` (see `airflow_settings.yaml`).
+- The Airflow Postgres connection is pre-configured as `db_conn` (see `airflow_settings.yaml`).
 - All demo data is stored as JSONB in the `raw` schema of the `demo` database.
 - dbt is installed in a separate venv to avoid dependency conflicts with Airflow.
 - Execute dbt commands you must in the dbt project direcotyr: 

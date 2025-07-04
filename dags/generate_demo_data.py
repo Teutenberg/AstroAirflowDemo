@@ -1,5 +1,5 @@
 """
-DAG to generate demo banking data and insert directly into Postgres using the 'pg_demo' Airflow connection.
+DAG to generate demo banking data and insert directly into Postgres using the 'db_conn' Airflow connection.
 """
 from airflow.decorators import dag, task
 from airflow.hooks.base import BaseHook
@@ -83,7 +83,7 @@ def generate_demo_data():
 
     @task()
     def insert_to_postgres(customers, accounts, transactions):
-        hook = PostgresHook(postgres_conn_id='pg_demo')
+        hook = PostgresHook(postgres_conn_id='db_conn')
         # Insert customers
         hook.run("TRUNCATE table raw.customer;")
         customer_rows = [(json.dumps(c),) for c in customers]
@@ -103,7 +103,7 @@ def generate_demo_data():
         from decimal import Decimal, ROUND_HALF_EVEN
         import json
         from airflow.providers.postgres.hooks.postgres import PostgresHook
-        hook = PostgresHook(postgres_conn_id='pg_demo')
+        hook = PostgresHook(postgres_conn_id='db_conn')
         # Helper to handle both JSON string and dict
         def parse_row(row):
             val = row[0]
