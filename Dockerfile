@@ -1,5 +1,5 @@
 # https://www.astronomer.io/docs/astro/runtime-image-architecture
-FROM quay.io/astronomer/astro-runtime:13.0.0
+FROM quay.io/astronomer/astro-runtime:13.1.0
 
 
 # install dbt into a virtual environment
