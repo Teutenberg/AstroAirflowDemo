@@ -41,7 +41,6 @@ models:
       - name: customer_id
         description: Customer identifier
         tests:
-          - unique
           - not_null
       - name: account_number
         description: Account number
@@ -78,7 +77,6 @@ models:
       - name: account_id
         description: Account identifier
         tests:
-          - unique
           - not_null
       - name: transaction_type
         description: Type of transaction
