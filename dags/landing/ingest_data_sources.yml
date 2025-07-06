@@ -19,3 +19,45 @@ data_sources:
       tags:
         - seismicportal.eu
         - fdsn-wsevent
+
+  - name: coinbase_currency_codes
+    description: Country fiat currency codes from Coinbase API
+    type: api
+    uri: https://api.coinbase.com/v2/currencies
+    dag_configs: 
+      schedule: null
+      start_date: 2025-07-01
+      catchup: false
+      concurrency: 1
+      tags:
+        - coinbase.com
+        - currency_codes
+
+  - name: binance_crypto_ticker_24hr
+    description: 24hour cryptocurrency ticker price data from Binance API
+    type: api
+    uri: https://api4.binance.com/api/v3/ticker/24hr
+    dag_configs: 
+      schedule: '@daily'
+      start_date: 2025-07-01
+      catchup: false
+      concurrency: 1
+      tags:
+        - binance.com
+        - crypto
+  - name: coingecko_crypto_markets
+    description: Seismic event data from https://www.seismicportal.eu/fdsn-wsevent.html
+    type: api
+    uri: https://api.coingecko.com/api/v3/coins/markets
+    params:
+      vs_currency: nzd
+      sparkline: "true"
+    dag_configs: 
+      schedule: '@daily'
+      start_date: 2025-07-01
+      catchup: false
+      concurrency: 4
+      tags:
+        - coingecko.com
+        - crypto
+        
