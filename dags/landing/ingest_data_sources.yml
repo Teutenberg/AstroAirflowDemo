@@ -1,0 +1,21 @@
+data_sources:
+  - name: seismic_portal_events
+    description: Seismic event data from https://www.seismicportal.eu/fdsn-wsevent.html
+    type: api
+    uri: https://seismicportal.eu/fdsnws/event/1/query
+    params:
+      format: json
+      lat: -42
+      lon: 174
+      minradius: 0
+      maxradius: 10
+      starttime: {{ data_interval_start.strftime('%Y-%m-%dT%H:%M:%S') }}
+      endtime: {{ data_interval_end.strftime('%Y-%m-%dT%H:%M:%S') }}
+    dag_configs: 
+      schedule: '@daily'
+      start_date: 2025-07-01
+      catchup: true
+      concurrency: 4
+      tags:
+        - seismicportal.eu
+        - fdsn-wsevent
