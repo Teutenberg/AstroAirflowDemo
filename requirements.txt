@@ -1,6 +1,10 @@
 # Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
 # dag-factory>=0.23.0a7  # (optional) For dynamic DAG generation from YAML configs
+apache-airflow-providers-standard # Standard Airflow providers package
 apache-airflow-providers-postgres  # Airflow Postgres operator/hooks for database tasks
 astronomer-cosmos                  # Astronomer Cosmos: dbt integration for Airflow
 faker                             # Python library for generating fake data (used in demo DAG)
 pandas
+sqlalchemy
+psycopg2-binary
+requests

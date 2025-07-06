@@ -43,6 +43,8 @@ if (-not (Test-Path $dbtVenv)) {
 Write-Host "Activating .venv_airflow and installing requirements..."
 & (Join-Path $airflowVenv "Scripts\Activate.ps1")
 python -m pip install --upgrade pip
+# Install Apache Airflow and any additional requirements from requirements.txt for linting
+python -m pip install apache-airflow
 if (Test-Path (Join-Path $PSScriptRoot "requirements.txt")) {
     pip install -r (Join-Path $PSScriptRoot "requirements.txt")
 } else {
@@ -53,7 +55,7 @@ if (Test-Path (Join-Path $PSScriptRoot "requirements.txt")) {
 Write-Host "Activating .venv_dbt and installing dbt dependencies..."
 & (Join-Path $dbtVenv "Scripts\Activate.ps1")
 python -m pip install --upgrade pip
-pip install dbt-core dbt-postgres
+python -m pip install dbt-core dbt-postgres
 
 # Set environment variable for dbt profiles directory
 # This is where dbt will look for the profiles.yml file
