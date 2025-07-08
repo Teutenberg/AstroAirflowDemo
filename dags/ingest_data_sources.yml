@@ -9,13 +9,15 @@ data_sources:
       lon: 174
       minradius: 0
       maxradius: 10
-      starttime: {{ data_interval_start.strftime('%Y-%m-%dT%H:%M:%S') }}
-      endtime: {{ data_interval_end.strftime('%Y-%m-%dT%H:%M:%S') }}
+      starttime: "{{ data_interval_start.strftime('%Y-%m-%dT%H:%M:%S') }}"
+      endtime: "{{ data_interval_end.strftime('%Y-%m-%dT%H:%M:%S') }}"
     dag_configs: 
+      dag_id: ingest_seismic_portal_events
       schedule: '@daily'
       start_date: 2025-07-01
       catchup: true
       concurrency: 4
+      max_active_runs: 1
       tags:
         - seismicportal.eu
         - fdsn-wsevent
@@ -25,10 +27,12 @@ data_sources:
     type: api
     uri: https://api.coinbase.com/v2/currencies
     dag_configs: 
+      dag_id: ingest_coinbase_currency_codes
       schedule: null
       start_date: 2025-07-01
       catchup: false
       concurrency: 1
+      max_active_runs: 1
       tags:
         - coinbase.com
         - currency_codes
@@ -38,13 +42,16 @@ data_sources:
     type: api
     uri: https://api4.binance.com/api/v3/ticker/24hr
     dag_configs: 
+      dag_id: ingest_binance_crypto_ticker_24hr
       schedule: '@daily'
       start_date: 2025-07-01
       catchup: false
       concurrency: 1
+      max_active_runs: 1
       tags:
         - binance.com
         - crypto
+
   - name: coingecko_crypto_markets
     description: Seismic event data from https://www.seismicportal.eu/fdsn-wsevent.html
     type: api
@@ -52,11 +59,13 @@ data_sources:
     params:
       vs_currency: nzd
       sparkline: "true"
-    dag_configs: 
+    dag_configs:
+      dag_id: ingest_coingecko_crypto_markets 
       schedule: '@daily'
       start_date: 2025-07-01
       catchup: false
       concurrency: 4
+      max_active_runs: 1
       tags:
         - coingecko.com
         - crypto

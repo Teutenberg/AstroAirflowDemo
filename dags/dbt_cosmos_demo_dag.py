@@ -13,7 +13,7 @@ from cosmos.profiles import PostgresUserPasswordProfileMapping
 from cosmos import ExecutionConfig
 
 DBT_EXECUTABLE_PATH = Path("/usr/local/airflow/dbt_venv/bin/dbt")
-DEFAULT_DBT_ROOT_PATH = Path("/usr/local/airflow/dbt")
+DEFAULT_DBT_ROOT_PATH = Path("/usr/local/airflow/dags/dbt")
 # Use the environment variable DBT_ROOT_PATH if set, otherwise use the default path
 # This allows for the path to be overridden in the Airflow environment
 DBT_ROOT_PATH = Path(os.getenv("DBT_ROOT_PATH", DEFAULT_DBT_ROOT_PATH))

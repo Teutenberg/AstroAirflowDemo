@@ -7,10 +7,10 @@
 
 airflow:
   connections:
-    - conn_id: db_conn
+    - conn_id: default_conn
       conn_type: postgres
       conn_host: host.docker.internal
-      conn_schema: demo
+      conn_schema: postgres
       conn_login: postgres
       conn_password: postgres
       conn_port: 5432

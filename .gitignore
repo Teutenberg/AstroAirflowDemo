@@ -12,3 +12,6 @@ airflow.db
 logs/
 *.log
 *.user.yml
+target/
+dbt_packages/
+logs/

@@ -10,6 +10,6 @@
     // To activate the dbt environment in a new terminal:
     //   . .venv_dbt\Scripts\Activate.ps1
     //
-    // The setting below ensures Python tools in VS Code use the Airflow environment by default.
+    // The setting below ensures Python tools in VS Code use the Airflow environment by default for linting.
     "python.defaultInterpreterPath": "${workspaceFolder}/.venv_airflow/Scripts/python.exe"
 }
