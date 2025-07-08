@@ -111,6 +111,10 @@ def ingest_data(df, table_name, schema_name, hook):
     engine = hook.get_sqlalchemy_engine()
     with engine.connect() as conn:
         inspector = inspect(engine)
+        # Use dialect-agnostic quoting
+        dialect = engine.dialect
+        def quote(name):
+            return dialect.identifier_preparer.quote(name)
         table_exists = inspector.has_table(table_name, schema=schema_name)
         if table_exists:
             columns = {col['name'] for col in inspector.get_columns(table_name, schema=schema_name)}
@@ -118,17 +122,23 @@ def ingest_data(df, table_name, schema_name, hook):
             for col in missing_cols:
                 sql_type = map_dtype_to_sql(df[col].dtype, engine.dialect)
                 logger.info(f"Altering table to add column: {col} {sql_type}")
-                alter_sql = f'ALTER TABLE "{schema_name}"."{table_name}" ADD COLUMN "{col}" {sql_type}';
+                alter_sql = f'ALTER TABLE {quote(schema_name)}.{quote(table_name)} ADD COLUMN {quote(col)} {sql_type}' if schema_name else f'ALTER TABLE {quote(table_name)} ADD COLUMN {quote(col)} {sql_type}'
                 try:
                     conn.execute(alter_sql)
                 except Exception as e:
                     logger.warning(f"Could not add column {col}: {e}")
             logger.info(f"Appending {len(df)} rows to existing table {schema_name}.{table_name}.")
-            df.to_sql(table_name, engine, if_exists='append', index=False, schema=schema_name)
+            try:
+                df.to_sql(table_name, engine, if_exists='append', index=False, schema=schema_name)
+            except TypeError:
+                # Some DBs (e.g., SQLite) do not support schema argument
+                df.to_sql(table_name, engine, if_exists='append', index=False)
         else:
             logger.info(f"Creating new table {schema_name}.{table_name} and ingesting {len(df)} rows.")
-            df.to_sql(table_name, engine, if_exists='fail', index=False, schema=schema_name)
-    logger.info(f"Successfully ingested {len(df)} rows into {schema_name}.{table_name}.")
+            try:
+                df.to_sql(table_name, engine, if_exists='fail', index=False, schema=schema_name)
+            except TypeError:
+                df.to_sql(table_name, engine, if_exists='fail', index=False)
 
 def create_ingest_dag(source_config, DEFAULT_ARGS=None):
     source_description = source_config.get('description', '')
