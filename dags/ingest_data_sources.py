@@ -10,7 +10,7 @@ from sqlalchemy.types import Integer, Float, Boolean, String, DateTime
 from airflow import DAG
 from airflow.providers.standard.operators.python import PythonOperator
 from airflow.hooks.base import BaseHook
-from datetime import datetime, timedelta
+from datetime import timedelta
 import yaml
 import pendulum
 from airflow.utils.log.logging_mixin import LoggingMixin
@@ -109,9 +109,7 @@ def ingest_data(df, table_name, schema_name, hook):
             df[col] = df[col].apply(lambda x: json.dumps(x) if isinstance(x, dict) else x)
 
     engine = hook.get_sqlalchemy_engine()
-    # Use context manager for connection to ensure closure
     with engine.connect() as conn:
-        # --- Schema evolution logic ---
         inspector = inspect(engine)
         table_exists = inspector.has_table(table_name, schema=schema_name)
         if table_exists:
@@ -125,8 +123,11 @@ def ingest_data(df, table_name, schema_name, hook):
                     conn.execute(alter_sql)
                 except Exception as e:
                     logger.warning(f"Could not add column {col}: {e}")
-    logger.info(f"Writing {len(df)} rows to {schema_name}.{table_name}.")
-    df.to_sql(table_name, engine, if_exists='append', index=False, schema=schema_name)
+            logger.info(f"Appending {len(df)} rows to existing table {schema_name}.{table_name}.")
+            df.to_sql(table_name, engine, if_exists='append', index=False, schema=schema_name)
+        else:
+            logger.info(f"Creating new table {schema_name}.{table_name} and ingesting {len(df)} rows.")
+            df.to_sql(table_name, engine, if_exists='fail', index=False, schema=schema_name)
     logger.info(f"Successfully ingested {len(df)} rows into {schema_name}.{table_name}.")
 
 def create_ingest_dag(source_config, DEFAULT_ARGS=None):
